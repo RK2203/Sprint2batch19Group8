@@ -1,5 +1,9 @@
 package pages;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,7 +55,15 @@ public class LibrarySearchPage {
     // Inline error for Author Name
     @FindBy(id = "authorNameError")
     private WebElement authorNameError;
-
+    
+    
+    @FindBy(id = "ageGroupError")
+    private WebElement ageGroupError;
+    
+    @FindBy(id = "editionError")
+    private WebElement editionErrorMsg;
+    
+    
     // Action Methods
     public void enterAuthorName(String author) {
         authorNameInput.clear();
@@ -93,6 +105,25 @@ public class LibrarySearchPage {
 
     public String getAuthorNameError() {
         return authorNameError.getText().trim();
+    }
+    
+    public String getAgeGroupError() {
+        return ageGroupError.getText().trim();
+    }
+    
+    public List<String> getBookFormatOptions() {
+        Select formatSelect = new Select(driver.findElement(By.id("format")));
+        List<WebElement> options = formatSelect.getOptions();
+        List<String> formatTexts = new ArrayList<>();
+        for (WebElement option : options) {
+            formatTexts.add(option.getText().trim());
+        }
+        return formatTexts;
+    }
+    
+   
+    public String getEditionErrorMessage() {
+        return editionErrorMsg.getText();
     }
 
     public void performAdvancedSearch(String author, String subject, String edition, String format, String ageGroup) {

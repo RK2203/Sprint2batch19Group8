@@ -8,6 +8,7 @@ import pages.LibrarySearchPage;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 
 import org.junit.Assert;
@@ -34,7 +35,7 @@ public class StepDefination {
     	
     	System.out.println(prop.getProperty("search_url"));
     	
-        driver.get("https://webapps.tekstac.com/SeleniumApp2/Library/advancedSearch.html"); // Replace with actual URL
+        driver.get(prop.getProperty("search_url")); // Replace with actual URL
         searchPage = new LibrarySearchPage(driver);
     }
 
@@ -67,6 +68,25 @@ public class StepDefination {
     public void the_user_clicks_on_the_search_button() {
         searchPage.clickSearch();
     }
+    
+    @When("the user does not select any age group")
+    
+    public void the_user_does_not_select_any_age_group() {
+    	
+    }
+    
+    
+    
+    @When("the user checks the available options in the Book Format dropdown")
+    public void the_user_checks_the_available_options_in_the_book_format_dropdown() {
+        // No action needed; just preparing to verify in next step
+    }
+
+    @Then("the Book Format dropdown should contain the following options:")
+    public void the_book_format_dropdown_should_contain_the_following_options(List<String> expectedOptions) {
+        List<String> actualOptions = searchPage.getBookFormatOptions();
+        Assert.assertEquals(expectedOptions, actualOptions);
+    }
 
     @Then("the search results should be displayed")
     public void the_search_results_should_be_displayed() {
@@ -80,4 +100,24 @@ public class StepDefination {
         String actualError = searchPage.getAuthorNameError();
         Assert.assertEquals(expectedMessage, actualError);
     }
+    
+    
+    @Then("an inline error should be shown with message of age {string}")
+    public void an_inline_error_should_be_shown_with_message_of_age(String expectedMessage) {
+        String actualError = searchPage.getAgeGroupError();
+        Assert.assertEquals(expectedMessage, actualError);
+    }
+    
+    @When("the user leaves edition as default")
+    public void the_user_leaves_edition_as_default() {
+        // Do nothing — default is already "Select"
+    }
+
+    @Then("an inline error should be shown with message of {string}")
+    public void an_inline_error_should_be_shown_with_message_of(String expectedMsg) {
+        String actualMsg = searchPage.getEditionErrorMessage(); // You must implement this
+        Assert.assertEquals(expectedMsg, actualMsg);
+    }
+
+    
 }
