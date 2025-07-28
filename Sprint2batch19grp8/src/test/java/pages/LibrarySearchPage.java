@@ -1,7 +1,5 @@
 package pages;
 
-import java.nio.channels.SelectableChannel;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -50,6 +48,10 @@ public class LibrarySearchPage {
     @FindBy(id = "searchSubmit")
     private WebElement searchSubmitButton;
 
+    // Inline error for Author Name
+    @FindBy(id = "authorNameError")
+    private WebElement authorNameError;
+
     // Action Methods
     public void enterAuthorName(String author) {
         authorNameInput.clear();
@@ -62,18 +64,13 @@ public class LibrarySearchPage {
     }
 
     public void selectEdition(String editionValue) {
-      
-    	Select select = new Select(editionDropdown);
-    	
-    	select.selectByVisibleText(editionValue);
-    	
+        Select select = new Select(editionDropdown);
+        select.selectByVisibleText(editionValue);
     }
 
     public void selectFormat(String formatValue) {
-       
-    	Select select = new Select(formatDropdown);
-    	select.selectByVisibleText(formatValue);
-    	
+        Select select = new Select(formatDropdown);
+        select.selectByVisibleText(formatValue);
     }
 
     public void selectAgeGroup(String ageGroup) {
@@ -94,6 +91,9 @@ public class LibrarySearchPage {
         searchSubmitButton.click();
     }
 
+    public String getAuthorNameError() {
+        return authorNameError.getText().trim();
+    }
 
     public void performAdvancedSearch(String author, String subject, String edition, String format, String ageGroup) {
         enterAuthorName(author);

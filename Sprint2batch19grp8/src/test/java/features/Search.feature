@@ -1,4 +1,3 @@
-
 Feature: Advanced Library Book Search
 
   Scenario: Search books using all advanced search fields
@@ -10,3 +9,13 @@ Feature: Advanced Library Book Search
     And the user selects age group as "Teen"
     And the user clicks on the search button
     Then the search results should be displayed
+
+  Scenario: Verify mandatory validation for Author Name
+    Given the user is on the Advanced Search page
+    When the user enters author name as ""
+    And the user enters subject as "Science"
+    And the user selects edition as "Edition 3"
+    And the user selects format as "E_Books"
+    And the user selects age group as "Teen"
+    And the user clicks on the search button
+    Then an inline error should be shown with message "Please Enter the Author Name"

@@ -5,15 +5,35 @@ import org.openqa.selenium.WebDriver;
 import hooks.Hook;
 import io.cucumber.java.en.*;
 import pages.LibrarySearchPage;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 import org.junit.Assert;
 
-public class StepDefination{
+public class StepDefination {
 
     WebDriver driver = Hook.driver;
     LibrarySearchPage searchPage;
-
+    
+    
+    Properties prop = new Properties();
+    
+    FileInputStream fStream;
+    
+    
+    
     @Given("the user is on the Advanced Search page")
-    public void the_user_is_on_the_advanced_search_page() {
+    public void the_user_is_on_the_advanced_search_page() throws IOException{
+    	
+    	
+    	fStream = new FileInputStream(".//src//test//java//resources//config.properties");
+    	prop.load(fStream);
+    	
+    	
+    	System.out.println(prop.getProperty("search_url"));
+    	
         driver.get("https://webapps.tekstac.com/SeleniumApp2/Library/advancedSearch.html"); // Replace with actual URL
         searchPage = new LibrarySearchPage(driver);
     }
@@ -53,5 +73,11 @@ public class StepDefination{
         // Example check — you may update with actual result validation logic
         String pageTitle = driver.getTitle();
         Assert.assertTrue("Search results not displayed!", pageTitle.contains("Search Results"));
+    }
+    
+    @Then("an inline error should be shown with message {string}")
+    public void an_inline_error_should_be_shown_with_message(String expectedMessage) {
+        String actualError = searchPage.getAuthorNameError();
+        Assert.assertEquals(expectedMessage, actualError);
     }
 }
