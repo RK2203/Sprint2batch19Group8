@@ -54,10 +54,6 @@ Before you begin, ensure you have the following installed:
    mvn clean install
    ```
    
-   For Gradle:
-   ```bash
-   gradle build
-   ```
 
 3. **Run the application**
    ```bash
