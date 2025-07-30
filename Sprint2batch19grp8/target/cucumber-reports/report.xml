@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="60.848" tests="12" skipped="0" failures="7" errors="0">
+<testcase classname="Library Card Sign-Up Validation" name="Display error when First Name is missing" time="10.338">
+<failure type="org.junit.ComparisonFailure" message="expected:&lt;[First Name is required]&gt; but was:&lt;[Please Enter the First Name]&gt;">
+<![CDATA[org.junit.ComparisonFailure: expected:<[First Name is required]> but was:<[Please Enter the First Name]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at stepdefinations.steps.validate_first_name_error(steps.java:102)
+	at ✽.an inline error message should be displayed for First Name as "First Name is required"(file:///C:/Users/xyz/git/Sprint2grp8batch19/Sprint2batch19grp8/src/test/java/features/LibraryCard.feature:20)
+]]>
+</failure>
+<system-out><![CDATA[
+Given the user is on the Library Card page..................................passed
+When the user leaves the First Name field blank.............................passed
+And the user enters "Sharma" in the Last Name field.........................passed
+And the user enters "25" in the Age field...................................passed
+And the user enters "test@mail.com" in the Email field......................passed
+And the user enters "9876543210" in the Phone field.........................passed
+And the user selects Student from the Role radio options....................passed
+And the user enters "ABC School" in the School field........................passed
+And the user selects "Apply New Card" from the Action dropdown..............passed
+And the user clicks on the Apply New Card button............................passed
+Then an inline error message should be displayed for First Name as "First Name is required".failed
+]]></system-out>
+</testcase>
+<testcase classname="Library Card Sign-Up Validation" name="Submit application successfully as Employee" time="8.379">
+<failure type="java.lang.AssertionError">
+<![CDATA[java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at stepdefinations.steps.verify_successful_submission(steps.java:114)
+	at ✽.the form should be submitted successfully(file:///C:/Users/xyz/git/Sprint2grp8batch19/Sprint2batch19grp8/src/test/java/features/LibraryCard.feature:32)
+]]>
+</failure>
+<system-out><![CDATA[
+Given the user is on the Library Card page..................................passed
+When the user enters "Raj" in the First Name field..........................passed
+And the user enters "Mehta" in the Last Name field..........................passed
+And the user enters "30" in the Age field...................................passed
+And the user enters "raj@mail.com" in the Email field.......................passed
+And the user enters "1234567890" in the Phone field.........................passed
+And the user selects Employee from the Role radio options...................passed
+And the user enters "CTS" in the Company field..............................passed
+And the user selects "Apply New Card" from the Action dropdown..............passed
+And the user clicks on the Apply New Card button............................passed
+Then the form should be submitted successfully..............................failed
+And a library card should be displayed with name "Raj Mehta"................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Library Card Sign-Up Validation" name="Display error when Age is missing" time="7.766">
+<failure type="org.junit.ComparisonFailure" message="expected:&lt;[Age is required]&gt; but was:&lt;[Please Enter the Age]&gt;">
+<![CDATA[org.junit.ComparisonFailure: expected:<[Age is required]> but was:<[Please Enter the Age]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at stepdefinations.steps.validate_age_error(steps.java:108)
+	at ✽.an inline error message should be displayed for Age as "Age is required"(file:///C:/Users/xyz/git/Sprint2grp8batch19/Sprint2batch19grp8/src/test/java/features/LibraryCard.feature:45)
+]]>
+</failure>
+<system-out><![CDATA[
+Given the user is on the Library Card page..................................passed
+When the user enters "Alok" in the First Name field.........................passed
+And the user enters "Tiwari" in the Last Name field.........................passed
+And the user leaves the Age field blank.....................................passed
+And the user enters "alok@mail.com" in the Email field......................passed
+And the user enters "9876501234" in the Phone field.........................passed
+And the user selects Student from the Role radio options....................passed
+And the user enters "XYZ School" in the School field........................passed
+And the user selects "Apply New Card" from the Action dropdown..............passed
+And the user clicks on the Apply New Card button............................passed
+Then an inline error message should be displayed for Age as "Age is required".failed
+]]></system-out>
+</testcase>
+<testcase classname="Advanced Library Book Search" name="Search books using all advanced search fields" time="4.947">
+<failure type="java.lang.AssertionError" message="Search results not displayed!">
+<![CDATA[java.lang.AssertionError: Search results not displayed!
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at stepdefinations.StepDefination.the_search_results_should_be_displayed(StepDefination.java:96)
+	at ✽.the search results should be displayed(file:///C:/Users/xyz/git/Sprint2grp8batch19/Sprint2batch19grp8/src/test/java/features/Search.feature:11)
+]]>
+</failure>
+<system-out><![CDATA[
+Given the user is on the Advanced Search page...............................passed
+When the user enters author name as "Rabindranath Tagore"...................passed
+And the user enters subject as "Poetry".....................................passed
+And the user selects edition as "Edition 2".................................passed
+And the user selects format as "E_Books"....................................passed
+And the user selects age group as "Teen"....................................passed
+And the user clicks on the search button....................................passed
+Then the search results should be displayed.................................failed
+]]></system-out>
+</testcase>
+<testcase classname="Advanced Library Book Search" name="Verify mandatory validation for Author Name" time="4.464">
+<system-out><![CDATA[
+Given the user is on the Advanced Search page...............................passed
+When the user enters author name as ""......................................passed
+And the user enters subject as "Science"....................................passed
+And the user selects edition as "Edition 3".................................passed
+And the user selects format as "E_Books"....................................passed
+And the user selects age group as "Teen"....................................passed
+And the user clicks on the search button....................................passed
+Then an inline error should be shown with message "Please Enter the Author Name".passed
+]]></system-out>
+</testcase>
+<testcase classname="Advanced Library Book Search" name="Verify validation for missing Age Group" time="3.642">
+<system-out><![CDATA[
+Given the user is on the Advanced Search page...............................passed
+When the user enters author name as "Agatha Christie".......................passed
+And the user enters subject as "Mystery"....................................passed
+And the user selects edition as "Edition 2".................................passed
+And the user selects format as "Magazines"..................................passed
+And the user does not select any age group..................................passed
+And the user clicks on the search button....................................passed
+Then an inline error should be shown with message of age "Please Select AgeGroup".passed
+]]></system-out>
+</testcase>
+<testcase classname="Advanced Library Book Search" name="Verify dropdown behavior for Book Format" time="3.022">
+<system-out><![CDATA[
+Given the user is on the Advanced Search page...............................passed
+When the user checks the available options in the Book Format dropdown......passed
+Then the Book Format dropdown should contain the following options:.........passed
+]]></system-out>
+</testcase>
+<testcase classname="Advanced Library Book Search" name="Verify error message when Edition is left as default" time="3.529">
+<system-out><![CDATA[
+Given the user is on the Advanced Search page...............................passed
+When the user enters author name as "Leo Tolstoy"...........................passed
+And the user enters subject as "History"....................................passed
+And the user selects format as "E_Books"....................................passed
+And the user selects age group as "Kids"....................................passed
+And the user leaves edition as default......................................passed
+And the user clicks on the search button....................................passed
+Then an inline error should be shown with message of "Please Select Edition".passed
+]]></system-out>
+</testcase>
+<testcase classname="Services Form - Email Submission" name="Submit valid Email form" time="3.42">
+<system-out><![CDATA[
+Given the user is on the Services form page.................................passed
+When the user selects "Email" option........................................passed
+And the user enters "alice@mail.com" in the "From" field....................passed
+And the user enters "librarian@library.com" in the "To" field...............passed
+And the user enters "Need access to digital archives" in the "Query" field..passed
+And the user clicks "Submit"................................................passed
+Then the message "Mail Sent Successfully" should appear.....................passed
+]]></system-out>
+</testcase>
+<testcase classname="Services Form - Email Submission" name="Submit Email with missing fields" time="3.276">
+<failure type="java.lang.AssertionError">
+<![CDATA[java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at stepdefinations.ServicesStepDefinition.the_error_message_should_be_shown(ServicesStepDefinition.java:99)
+	at ✽.the error message "Please enter a valid email and query" should be shown(file:///C:/Users/xyz/git/Sprint2grp8batch19/Sprint2batch19grp8/src/test/java/features/Services.feature:18)
+]]>
+</failure>
+<system-out><![CDATA[
+Given the user is on the Services form page.................................passed
+When the user selects "Email" option........................................passed
+And the user leaves "From" and "Query" fields blank.........................passed
+And the user clicks "Submit"................................................passed
+Then the error message "Please enter a valid email and query" should be shown.failed
+]]></system-out>
+</testcase>
+<testcase classname="Services Form - Email Submission" name="Submit Email with invalid email format" time="4.454">
+<failure type="org.junit.ComparisonFailure" message="expected:&lt;[Invalid email format]&gt; but was:&lt;[]&gt;">
+<![CDATA[org.junit.ComparisonFailure: expected:<[Invalid email format]> but was:<[]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at stepdefinations.ServicesStepDefinition.the_error_message_should_be_displayed_below_the_from_field(ServicesStepDefinition.java:105)
+	at ✽.the error message "Invalid email format" should be displayed below the From field(file:///C:/Users/xyz/git/Sprint2grp8batch19/Sprint2batch19grp8/src/test/java/features/Services.feature:25)
+]]>
+</failure>
+<system-out><![CDATA[
+Given the user is on the Services form page.................................passed
+When the user selects "Email" option........................................passed
+And the user enters "test@@mail" in the "From" field........................passed
+And the user enters "Book access issue" in the "Query" field................passed
+And the user clicks "Submit"................................................passed
+Then the error message "Invalid email format" should be displayed below the From field.failed
+]]></system-out>
+</testcase>
+<testcase classname="Services Form - Email Submission" name="Verify that the To field is auto-filled" time="3.322">
+<failure type="org.junit.ComparisonFailure" message="expected:&lt;[librarian@domain].com&gt; but was:&lt;[Librarian@library].com&gt;">
+<![CDATA[org.junit.ComparisonFailure: expected:<[librarian@domain].com> but was:<[Librarian@library].com>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at stepdefinations.ServicesStepDefinition.the_field_should_be_auto_filled_with(ServicesStepDefinition.java:112)
+	at ✽.the "To" field should be auto-filled with "librarian@domain.com"(file:///C:/Users/xyz/git/Sprint2grp8batch19/Sprint2batch19grp8/src/test/java/features/Services.feature:29)
+]]>
+</failure>
+<system-out><![CDATA[
+Given the user is on the Services form page.................................passed
+When the user selects "Email" option........................................passed
+Then the "To" field should be auto-filled with "librarian@domain.com".......failed
+]]></system-out>
+</testcase>
+</testsuite>
