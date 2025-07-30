@@ -98,7 +98,7 @@ Sprint2batch19Group8/
 │           └── features/
 │               └── [.feature files]
 ├── target/
-├── pom.xml (or build.gradle)
+├── pom.xml
 └── README.md
 ```
 
