@@ -35,8 +35,8 @@ Follow these instructions to get a copy of the project up and running on your lo
 Before you begin, ensure you have the following installed:
 
 - Java Development Kit (JDK) 8 or higher
-- Maven 3.6+ or Gradle 6.0+
-- IDE (IntelliJ IDEA, Eclipse, or VS Code)
+- Maven 3.6+
+- IDE (IntelliJ IDEA, Eclipse)
 - Git
 
 ### Installation
