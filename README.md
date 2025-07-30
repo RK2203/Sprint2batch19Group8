@@ -106,8 +106,9 @@ Sprint2batch19Group8/
 
 This project is a collaborative effort by:
 
-- **[RK2203](https://github.com/RK2203)** (Shoal Koley) - Project Lead & Developer
-- **[Gyanesh101](https://github.com/Gyanesh101)** - Developer & Tester
+- **[RK2203](https://github.com/RK2203)** (Shoal Koley) - Tester
+- **[Gyanesh101](https://github.com/Gyanesh101)** (Gyanesh Kumar Tiwari)- Tester
+- **[Harsh](https://github.com/sHarshvardhan)** (Harsh Sukhla) - Tester
 
 ## 📈 Development Workflow
 
@@ -129,14 +130,9 @@ app.name=Sprint2batch19Group8
 app.version=1.0.0
 environment=development
 
-# Database Configuration (if applicable)
-db.url=jdbc:h2:mem:testdb
-db.username=sa
-db.password=
-
 # Test Configuration
 test.browser=chrome
-test.timeout=30
+test.timeout=10
 ```
 
 ## 📚 Learning Objectives
