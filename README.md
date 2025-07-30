@@ -173,7 +173,7 @@ For questions or support regarding this project:
 
 ```
 
-*Last updated: $(date)*
+echo "*Last updated: $(date)*" > readme.md
 ```
 
 This README provides a comprehensive overview of your project based on the information visible in the GitHub screenshot. You may want to customize sections like:
